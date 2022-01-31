@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sensations/screens/explore_screen.dart';
 
 import '/screens/home_screen.dart';
 
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const HomeScreen(),
+      routes: {
+        ExploreScreen.routeName: (ctx) => const ExploreScreen(),
+      },
     );
   }
 }
