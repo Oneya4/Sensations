@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sensations/clippers/second_clipper.dart';
-import 'package:sensations/clippers/third_clipper.dart';
 
 import '/clippers/first_clipper.dart';
+import '/clippers/second_clipper.dart';
+import '/clippers/third_clipper.dart';
+import '/screens/explore_screen.dart';
+import '/widgets/nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,6 +12,16 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dSize = MediaQuery.of(context).size;
+    final headingStyle = TextStyle(
+      fontSize: 40,
+      fontWeight: FontWeight.bold,
+      color: Theme.of(context).colorScheme.onPrimary,
+    );
+    final subheadingStyle = TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: Theme.of(context).colorScheme.onPrimary,
+    );
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -26,22 +38,8 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Daydream',
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
-                    ),
-                    Text(
-                      'go beyond the farm',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
-                    )
+                    Text('Daydream', style: headingStyle),
+                    Text('go beyond the farm', style: subheadingStyle),
                   ],
                 ),
               ),
@@ -62,22 +60,8 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          'Meditation',
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                        ),
-                        Text(
-                          'discover happiness',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                        )
+                        Text('Meditation', style: headingStyle),
+                        Text('discover happiness', style: subheadingStyle),
                       ],
                     ),
                   ),
@@ -118,22 +102,8 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          'Sensations',
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                        ),
-                        Text(
-                          'feel the moment',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                        )
+                        Text('Sensations', style: headingStyle),
+                        Text('feel the moment', style: subheadingStyle),
                       ],
                     ),
                   ),
@@ -142,21 +112,13 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.ac_unit_rounded),
-              label: 'fff',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.ac_unit_rounded),
-              label: 'fff',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.ac_unit_rounded),
-              label: 'fff',
-            ),
-          ],
+        bottomNavigationBar: const NavBar(),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.ac_unit),
+          backgroundColor: Colors.transparent,
+          onPressed: () {
+            Navigator.of(context).pushNamed(ExploreScreen.routeName);
+          },
         ),
       ),
     );
